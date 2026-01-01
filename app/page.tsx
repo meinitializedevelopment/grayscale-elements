@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import { HeroSection } from "@/components/home/hero-section";
+import { Guide } from "@/components/home/guide";
+import { Features } from "@/components/home/features";
 
 export const metadata: Metadata = {
     title: "Grayscale Elements | Components, Blocks, and Templates for your Next.js Projects",
@@ -12,6 +14,8 @@ export default function HomePage() {
     return (
         <main>
             <HeroSection />
+            <Guide />
+            <Features />
         </main>
     );
 }
