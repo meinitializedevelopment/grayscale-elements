@@ -2,7 +2,7 @@ export const DOCS_SIDEBAR_NAVIGATION_LINKS = [
     {
         label: "Get Started",
         links: [
-            { label: "Introduction", href: "#" },
+            { label: "Introduction", href: "/docs" },
             { label: "Setup & Installation", href: "#" },
         ],
     },
@@ -12,12 +12,11 @@ export const DOCS_SIDEBAR_NAVIGATION_LINKS = [
 
 export const TOC_SIDEBAR_NAVIGATION_LINKS = {
     DOCS: [
-        { label: "Introduction", href: "#" },
-        { label: "Design Philosophy", href: "#" },
-        { label: "What This Library is Not", href: "#" },
-        { label: "How Everything Fits Together", href: "#" },
-        { label: "Quick Start", href: "#" },
-        { label: "License and Usage", href: "#" },
+        { label: "Introduction", href: "#introduction" },
+        { label: "Design Philosophy", href: "#design-philosophy" },
+        { label: "How Everything Fits Together", href: "#how-everything-fits-together" },
+        { label: "Library Scope Exclusions", href: "#library-scope-exclusions" },
+        { label: "License and Usage", href: "#license-and-usage" },
     ],
     SETUP: [
         { label: "Prerequisites", href: "#" },

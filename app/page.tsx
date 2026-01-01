@@ -6,7 +6,7 @@ import { Features } from "@/components/home/features";
 import { CTA } from "@/components/home/cta";
 
 export const metadata: Metadata = {
-    title: "Grayscale Elements | Components, Blocks, and Templates for your Next.js Projects",
+    title: "Grayscale Elements | Components and Templates for your Next Projects",
     description:
         "Welcome to Grayscale Elements, your source for production-ready UI components, blocks, and templates built with Next.js, Typescript, and Tailwind CSS.",
 };

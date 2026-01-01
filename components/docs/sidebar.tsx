@@ -9,7 +9,7 @@ import { cn } from "@/library/utilities";
 
 export function DocsSidebar() {
     return (
-        <div className="sticky top-20 h-[calc(100vh-80px)] w-72 shrink-0 space-y-6 overflow-y-auto py-6 max-md:hidden">
+        <div className="sticky top-20 h-[calc(100vh-80px)] w-64 shrink-0 space-y-6 overflow-y-auto py-6 max-lg:hidden">
             {DOCS_SIDEBAR_NAVIGATION_LINKS.map((item) => {
                 const links =
                     item.label.toLowerCase() === "get started"

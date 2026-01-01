@@ -12,7 +12,7 @@ export function Heading({ className, asChild, ...props }: HeadingProps) {
         <Component
             className={cn(
                 "scroll-m-20 text-center text-4xl leading-tight font-bold tracking-tight text-balance md:text-5xl",
-                "[h2&]:text-3xl [h3&]:text-2xl [h3&]:font-semibold",
+                "[h2&]:text-3xl [h3&]:text-xl [h3&]:font-semibold",
                 className
             )}
             {...props}

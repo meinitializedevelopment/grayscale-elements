@@ -35,7 +35,7 @@ export function HeroSection() {
                         </Link>
                     </Button>
                     <Button asChild variant="outline">
-                        <Link href="#">
+                        <Link href="/docs">
                             <DocumentTextIcon />
                             <span>Documentation</span>
                         </Link>
