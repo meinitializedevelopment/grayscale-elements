@@ -10,6 +10,6 @@ const variants = cva("bg-border", {
 
 type SeparatorProps = ComponentPropsWithoutRef<"div"> & VariantProps<typeof variants>;
 
-export function Separator({ orientation, className, ...props }: SeparatorProps) {
+export function Separator({ className, orientation, ...props }: SeparatorProps) {
     return <div className={cn(variants({ orientation }), className)} {...props} />;
 }
