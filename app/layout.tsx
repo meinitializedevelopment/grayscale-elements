@@ -6,6 +6,8 @@ import { Google_Sans } from "next/font/google";
 import "./globals.css";
 
 import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+
 import { cn } from "@/library/utilities";
 
 const googleSans = Google_Sans({
@@ -27,6 +29,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <body className={cn(googleSans.className, "antialiased")}>
                 <Header />
                 {children}
+                <Footer />
             </body>
         </html>
     );
