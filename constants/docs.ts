@@ -34,7 +34,7 @@ export const DESIGN_PHILOSOPHIES = [
         description:
             "The core components are intentionally conservative and stable. New components, UI blocks, and templates are added gradually, guided by real usage and iteration rather than strict version cycles or feature checklists.",
     },
-];
+] as const;
 
 export const LIBRARY_SCOPE_EXCLUSIONS = [
     {
@@ -82,7 +82,7 @@ export const LIBRARY_SCOPE_EXCLUSIONS = [
         description:
             "GrayscaleElements does not provide global CSS resets, opinionated design tokens, or automatic theming systems. Styling is intentionally local and transparent, allowing you to integrate components into existing design systems or Tailwind configurations without conflicts or overrides.",
     },
-];
+] as const;
 
 export const ELEMENT_RELATIONSHIP = [
     {
@@ -105,7 +105,7 @@ export const ELEMENT_RELATIONSHIP = [
         description:
             "Utilities are small helper components and functions that support composition and structure. They are not UI elements themselves, but tools that make patterns like prop forwarding or portal rendering possible.",
     },
-];
+] as const;
 
 export const LICENSE_AND_USAGE = [
     {
@@ -121,4 +121,147 @@ export const LICENSE_AND_USAGE = [
         label: "Ownership",
         description: "The ownership of GrayscaleElements remains with the original author.",
     },
-];
+] as const;
+
+export const PRETTIER_CONFIG_CONTENT = `{
+    "bracketSameLine": false,
+    "bracketSpacing": true,
+    "htmlWhitespaceSensitivity": "strict",
+    "jsxSingleQuote": false,
+    "plugins": ["prettier-plugin-tailwindcss"],
+    "printWidth": 120,
+    "semi": true,
+    "singleAttributePerLine": false,
+    "singleQuote": false,
+    "tabWidth": 4,
+    "trailingComma": "es5"
+}` as const;
+
+export const TAILWIND_CSS_STYLES = `@import "tailwindcss";
+
+@theme inline {
+    --color-background: oklch(1 0 0);
+    --color-foreground: oklch(0.14 0 0);
+    --color-primary: oklch(0.14 0 0);
+    --color-primary-foreground: oklch(0.99 0 0);
+    --color-secondary: oklch(0.92 0 0);
+    --color-secondary-foreground: oklch(0.14 0 0);
+    --color-destructive: oklch(0.51 0.19 28);
+    --color-destructive-foreground: oklch(0.97 0.01 17);
+    --color-muted: oklch(0.97 0 0);
+    --color-muted-foreground: oklch(0.56 0 0);
+    --color-border: oklch(0.92 0 0);
+}
+
+@layer base {
+    * {
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+        border-color: var(--color-border);
+        outline: none;
+    }
+
+    body {
+        font-weight: 400;
+        background-color: var(--color-background);
+        color: var(--color-foreground);
+        overflow-x: hidden;
+    }
+}` as const;
+
+export const WHY_TAILWIND_CSS_STYLING = [
+    {
+        label: "Utility-first approach",
+        description:
+            "Tailwind's utility classes promote clear, maintainable styling directly in the markup without complex CSS.",
+    },
+    {
+        label: "Neutral Foundation",
+        description: "A grayscale palette makes components adaptable to any brand or design system.",
+    },
+    {
+        label: "Explicit styling",
+        description:
+            "All color tokens are defined as CSS variables, making them easy to override without hidden configuration.",
+    },
+    {
+        label: "No global theming framework",
+        description: "This setup avoids enforced themes or automatic styling behavior.",
+    },
+    {
+        label: "Seamless integration",
+        description: "Tailwind CSS is widely used in modern web projects, ensuring compatibility and ease of adoption.",
+    },
+] as const;
+
+export const SLOT_UTILITY_CODE = `import { cloneElement, isValidElement, type HTMLAttributes } from "react";
+
+import { cn } from "@/library/utilities";
+
+function handleMergeProps(...props: Array<Record<string, unknown>>) {
+    const combinedProps = {} as Record<string, unknown>;
+
+    for (const prop of props) {
+        for (const key in prop) {
+            const previous = combinedProps[key];
+            const next = prop[key];
+
+            if (key === "className") {
+                combinedProps[key] = cn(previous as string, next as string);
+            } else if (key === "style") {
+                combinedProps[key] = { ...(previous as object), ...(next as object) };
+            } else if (/^on[A-Z]/.test(key) && typeof previous === "function" && typeof next === "function") {
+                combinedProps[key] = (...args: Array<unknown>) => {
+                    previous(...args);
+                    next(...args);
+                };
+            } else {
+                combinedProps[key] = next ?? previous;
+            }
+        }
+    }
+
+    return combinedProps;
+}
+
+export function Slot({ children, ...props }: HTMLAttributes<HTMLElement>) {
+    if (!isValidElement(children)) {
+        throw new Error("Slot children must be a valid react element");
+    }
+
+    return cloneElement(children, handleMergeProps(children.props as Record<string, unknown>, props));
+}
+` as const;
+
+export const BUTTON_COMPONENT_CODE = `import { type ComponentPropsWithoutRef } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+
+import { Slot } from "@/components/utilities/slot";
+import { cn } from "@/library/utilities";
+
+export const button = cva(
+    "focus-visible:ring-offset-background inline-flex cursor-pointer items-center justify-center rounded text-sm font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+    {
+        variants: {
+            variant: {
+                primary: "bg-primary text-primary-foreground hover:bg-primary/80 focus-visible:ring-primary",
+                secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:ring-secondary",
+                destructive:
+                    "bg-destructive text-destructive-foreground hover:bg-destructive/80 focus-visible:ring-destructive",
+                outline: "bg-background text-foreground hover:bg-muted focus-visible:ring-secondary border",
+                ghost: "text-foreground hover:bg-muted focus-visible:ring-secondary bg-transparent",
+            },
+            size: { small: "h-8 gap-1 px-3 py-2", medium: "h-10 gap-2 px-4 py-3", icon: "size-8" },
+        },
+        defaultVariants: { variant: "primary", size: "medium" },
+    }
+);
+
+type ButtonProps = ComponentPropsWithoutRef<"button"> & VariantProps<typeof button> & { asChild?: boolean };
+
+export function Button({ className, variant, size, asChild, ...props }: ButtonProps) {
+    const Component = asChild ? Slot : "button";
+
+    return <Component className={cn(button({ variant, size }), className)} {...props} />;
+}
+` as const;

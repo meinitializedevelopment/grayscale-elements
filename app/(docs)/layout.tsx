@@ -14,7 +14,7 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
     return (
         <div className="flex min-h-[calc(100vh-80px)] items-start gap-12">
             <DocsSidebar />
-            <main className="grow">
+            <main className="w-full grow">
                 <Container className="max-w-3xl">{children}</Container>
             </main>
             <TOCSidebar />

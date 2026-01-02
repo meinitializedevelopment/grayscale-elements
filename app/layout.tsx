@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
-import { Google_Sans } from "next/font/google";
+import { Google_Sans, Google_Sans_Code } from "next/font/google";
 
 import "./globals.css";
 
@@ -17,6 +17,14 @@ const googleSans = Google_Sans({
     style: ["normal"],
 });
 
+const googleSansCode = Google_Sans_Code({
+    subsets: ["latin"],
+    weight: ["400", "500"],
+    fallback: ["monospace"],
+    style: ["normal"],
+    variable: "--font-google-sans-code",
+});
+
 export const metadata: Metadata = {
     title: "Grayscale Elements | Components, Blocks, and Templates for your Next.js Projects",
     description:
@@ -26,7 +34,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
     return (
         <html lang="en">
-            <body className={cn(googleSans.className, "antialiased")}>
+            <body className={cn(googleSans.className, googleSansCode.variable, "antialiased")}>
                 <Header />
                 {children}
                 <Footer />

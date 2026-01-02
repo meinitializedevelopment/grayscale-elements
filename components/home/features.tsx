@@ -30,7 +30,7 @@ export function Features() {
                         </Text>
                     </div>
                     <Button asChild className="w-fit">
-                        <Link href="#">
+                        <Link href="/docs/setup">
                             <span>Get Started Now</span>
                             <ArrowLongRightIcon />
                         </Link>

@@ -12,6 +12,8 @@
     --color-muted: oklch(0.97 0 0);
     --color-muted-foreground: oklch(0.56 0 0);
     --color-border: oklch(0.92 0 0);
+
+    --font-mono: "Google Sans Code", monospace;
 }
 
 @layer base {

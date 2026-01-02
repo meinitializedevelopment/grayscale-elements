@@ -22,7 +22,7 @@ export function CTA() {
                     </div>
                     <div className="flex items-center justify-center gap-2 max-sm:flex-col sm:gap-4">
                         <Button asChild variant="secondary" className="text-primary max-sm:w-full">
-                            <Link href="#">
+                            <Link href="/docs/setup">
                                 <span>Start Building for Free</span>
                             </Link>
                         </Button>
