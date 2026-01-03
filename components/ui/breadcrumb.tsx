@@ -9,7 +9,7 @@ export function Breadcrumb({ className, ...props }: ComponentPropsWithoutRef<"na
 }
 
 export function BreadcrumbList({ className, ...props }: ComponentPropsWithoutRef<"ol">) {
-    return <ol className={cn("flex flex-wrap items-center gap-2", className)} {...props} />;
+    return <ol className={cn("flex flex-wrap items-center gap-1", className)} {...props} />;
 }
 
 export function BreadcrumbItem({ className, ...props }: ComponentPropsWithoutRef<"li">) {
@@ -46,7 +46,7 @@ export function BreadcrumbPage({ className, ...props }: ComponentPropsWithoutRef
 
 export function BreadcrumbSeparator({ children, className, ...props }: ComponentPropsWithoutRef<"li">) {
     return (
-        <li className={cn("[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0", className)} {...props}>
+        <li className={cn("[&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0", className)} {...props}>
             {children ?? <ChevronRightIcon />}
         </li>
     );

@@ -271,3 +271,74 @@ export function Button({ className, variant, size, asChild, ...props }: ButtonPr
     return <Component className={cn(button({ variant, size }), className)} {...props} />;
 }
 ` as const;
+
+export const DRAWBACKS_OF_NOT_USING_SLOT = [
+    "Multiple conditional render paths",
+    "Boolean flags like asChild or asLink or isAnchor",
+    "Hard-coded polymorphism that's difficult to extend",
+    "Hidden behavior that's hard to reason about",
+] as const;
+
+export const DESIGN_PRINCIPLES_OF_SLOT = [
+    { label: "Explicit over implicit", description: "No magic rendering logic" },
+    { label: "Composition over configuration", description: "Consumers control structure" },
+    { label: "No framework opinions", description: "Works with native elements or custom components" },
+    { label: "Minimal abstraction", description: "Just enough logic to solve one problem well" },
+] as const;
+
+export const SLOT_CHARACTERISTICS = [
+    "Only supports a single child",
+    "Does not render additional DOM nodes",
+    "Preserves the child's original element type",
+    "Merges props in a predictable order",
+    "Avoiding prop drilling",
+    "Enabling flexible component composition",
+    "Supporting higher-order components",
+] as const;
+
+export const SLOT_USAGE_SCENARIOS = [
+    "Rendering a button as an anchor",
+    "Using framework-specific link components",
+    "Preserving styles, refs, and accessibility",
+] as const;
+
+export const SLOT_BUTTON_USAGE_CODE = `import { Button } from "@/components/ui/button";
+
+export function ExamplePage() {
+    return (
+        <div className="flex items-center justify-center gap-4 p-12">
+            <Button>
+                <span>Native Button</span>
+            </Button>
+            <Button asChild>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                    <span>As Link</span>
+                </a>
+            </Button>
+        </div>
+    );
+}` as const;
+
+export const SLOT_USAGE_BEST_PRACTICES = [
+    "A component's structure should be controlled by the consumer",
+    "Styling and behavior need to remain consistent regardless of the rendered element",
+    'You want to avoid as="tag" APIs or enum-based polymorphism',
+    "Flexibility matters more than strict encapsulation",
+] as const;
+
+export const SLOT_COMMON_MISTAKES = [
+    "Using multiple children instead of a single child",
+    "The rendered element must be fixed for semantic reasons",
+    "Relying on implicit behavior or hidden logic",
+    "Not preserving refs or accessibility attributes",
+    "The component owns its entire DOM structure",
+    "Overcomplicating prop merging logic",
+    "Simpler composition patterns are sufficient",
+] as const;
+
+export const ACCESSIBILITY_CONSIDERATIONS_FOR_SLOT = [
+    "The rendered element has appropriate semantics for its purpose",
+    "Interactive elements include correct keyboard and focus behavior",
+    "ARIA attributes are applied intentionally when required",
+    "Links, buttons, and controls are not interchanged without considering accessibility implications",
+];
