@@ -24,6 +24,7 @@ import {
     CodeBlockTitle,
 } from "@/components/ui/code-block";
 import { Button } from "@/components/ui/button";
+import { Blockquote } from "@/components/ui/blockquote";
 
 import {
     ACCESSIBILITY_CONSIDERATIONS_FOR_SLOT,
@@ -113,7 +114,8 @@ export default function SlotPage() {
             </Text>
             <Text className="mb-6">
                 Paste the Slot implementation below into this file. Once added, Slot can be reused across all components
-                that require flexible rendering.
+                that require flexible rendering capabilities. And because Slot has no dependencies, it adds no
+                additional bundle size.
             </Text>
             <CodeBlock language="typescript">
                 <CodeBlockHeader>
@@ -125,6 +127,10 @@ export default function SlotPage() {
                     <CodeBlockCode>{SLOT_UTILITY_CODE}</CodeBlockCode>
                 </CodeBlockContent>
             </CodeBlock>
+            <Blockquote className="mt-6">
+                The code is intentionally small, explicit, and framework-agnostic. You are encouraged to read it and
+                understand how it works before using it.
+            </Blockquote>
             <Heading asChild id="how-slot-works" className="mt-12 text-start sm:mt-24">
                 <h2>How Slot Works</h2>
             </Heading>
@@ -147,8 +153,10 @@ export default function SlotPage() {
             <Heading asChild id="basic-usage" className="mt-12 text-start sm:mt-24">
                 <h2>Basic Usage</h2>
             </Heading>
-            <Text>Slot is usually not consumed directly. Instead, it is used internally by other components.</Text>
-            <Text>A common example is a Button that supports rendering as a link:</Text>
+            <Text>
+                Slot is usually not consumed directly. Instead, it is used internally by other components. A common
+                example is a Button that supports rendering as a link:
+            </Text>
             <ul className="ms-6 mt-6 mb-12 list-disc space-y-4">
                 <li>
                     <Text>
@@ -197,7 +205,7 @@ export default function SlotPage() {
                 </CodeBlockContent>
             </CodeBlock>
             <Text>
-                The Button&aps;s styling and behavior remain unchanged. Only the rendered element changes. This keeps
+                The Button&apos;s styling and behavior remain unchanged. Only the rendered element changes. This keeps
                 APIs small, expressive, and future-proof.
             </Text>
             <Heading asChild id="when-to-use-slot" className="mt-12 text-start sm:mt-24">
