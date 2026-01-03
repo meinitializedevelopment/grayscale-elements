@@ -27,6 +27,8 @@ import { Code } from "@/components/ui/code";
 
 import {
     BUTTON_COMPONENT_CODE,
+    CREATE_NEXT_APP_COMMAND,
+    INSTALL_DEPENDENCIES_COMMAND,
     PRETTIER_CONFIG_CONTENT,
     SLOT_UTILITY_CODE,
     TAILWIND_CSS_STYLES,
@@ -85,8 +87,7 @@ export default function SetupPage() {
                     <CodeBlockCopy />
                 </CodeBlockHeader>
                 <CodeBlockContent>
-                    <CodeBlockCode>npx create-next-app@latest your-application-name --typescript</CodeBlockCode>
-                    <CodeBlockCode>code your-application-name</CodeBlockCode>
+                    <CodeBlockCode>{CREATE_NEXT_APP_COMMAND}</CodeBlockCode>
                 </CodeBlockContent>
             </CodeBlock>
             <Heading asChild id="installing-dependencies" className="mt-12 text-start sm:mt-24">
@@ -104,10 +105,7 @@ export default function SetupPage() {
                     <CodeBlockCopy />
                 </CodeBlockHeader>
                 <CodeBlockContent>
-                    <CodeBlockCode>npm install --save-dev prettier prettier-plugin-tailwindcss</CodeBlockCode>
-                    <CodeBlockCode>
-                        npm install @heroicons/react tailwind-merge clsx class-variance-authority
-                    </CodeBlockCode>
+                    <CodeBlockCode>{INSTALL_DEPENDENCIES_COMMAND}</CodeBlockCode>
                 </CodeBlockContent>
             </CodeBlock>
             <Text>
@@ -140,7 +138,7 @@ export default function SetupPage() {
                 content. This configuration ensures consistent formatting and automatically sorts Tailwind CSS utility
                 classes.
             </Text>
-            <CodeBlock>
+            <CodeBlock language="json">
                 <CodeBlockHeader>
                     <DocumentTextIcon />
                     <CodeBlockTitle>.prettierrc</CodeBlockTitle>
@@ -173,7 +171,7 @@ export default function SetupPage() {
                 Replace the contents of your <Code>index.css</Code> or <Code>globals.css</Code> file with the following
                 code. This sets up a stable grayscale palette and base styles used across all components.
             </Text>
-            <CodeBlock>
+            <CodeBlock language="css">
                 <CodeBlockHeader>
                     <DocumentTextIcon />
                     <CodeBlockTitle>globals.css</CodeBlockTitle>
@@ -208,7 +206,7 @@ export default function SetupPage() {
                 HTML tag. This makes components more flexible without introducing configuration complexity or hidden
                 behavior.
             </Text>
-            <CodeBlock>
+            <CodeBlock language="typescript">
                 <CodeBlockHeader>
                     <DocumentTextIcon />
                     <CodeBlockTitle>slot.tsx</CodeBlockTitle>
@@ -230,7 +228,7 @@ export default function SetupPage() {
                 This Button component is intentionally small and explicit. It uses Tailwind CSS for styling and supports
                 a few controlled variants and sizes without enforcing a design system or application logic.
             </Text>
-            <CodeBlock>
+            <CodeBlock language="typescript">
                 <CodeBlockHeader>
                     <DocumentTextIcon />
                     <CodeBlockTitle>button.tsx</CodeBlockTitle>

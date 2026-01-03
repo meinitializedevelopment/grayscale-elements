@@ -123,6 +123,12 @@ export const LICENSE_AND_USAGE = [
     },
 ] as const;
 
+export const CREATE_NEXT_APP_COMMAND = `npx create-next-app@latest your-application-name --typescript
+code your-application-name` as const;
+
+export const INSTALL_DEPENDENCIES_COMMAND = `npm install --save-dev prettier prettier-plugin-tailwindcss
+npm install @heroicons/react tailwind-merge clsx class-variance-authority` as const;
+
 export const PRETTIER_CONFIG_CONTENT = `{
     "bracketSameLine": false,
     "bracketSpacing": true,
