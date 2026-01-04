@@ -5,8 +5,8 @@ import Link from "next/link";
 import { type VariantProps } from "class-variance-authority";
 import { ArrowLongLeftIcon, ArrowLongRightIcon, DocumentTextIcon } from "@heroicons/react/24/solid";
 
-import { Heading } from "@/components/ui/heading";
-import { Text } from "@/components/ui/text";
+import { badge, Badge } from "@/components/ui/badge";
+import { Blockquote } from "@/components/ui/blockquote";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -15,6 +15,8 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
+import { Code } from "@/components/ui/code";
 import {
     CodeBlock,
     CodeBlockCode,
@@ -23,31 +25,29 @@ import {
     CodeBlockHeader,
     CodeBlockTitle,
 } from "@/components/ui/code-block";
-import { button, Button } from "@/components/ui/button";
-import { Code } from "@/components/ui/code";
-import { Blockquote } from "@/components/ui/blockquote";
+import { Heading } from "@/components/ui/heading";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Text } from "@/components/ui/text";
 
-import { cn } from "@/library/utilities";
 import {
-    ACCESSIBILITY_CONSIDERATIONS_FOR_BUTTON,
-    BUTTON_AS_CHILD_USAGE_CODE,
-    BUTTON_COMPONENT_API_TABLE,
-    BUTTON_COMPONENT_CODE,
-    BUTTON_DESIGN_GOALS,
-    BUTTON_PREVIEW,
-    BUTTON_VARIANTS_AND_SIZES,
-    HOW_BUTTON_WORKS,
+    ACCESSIBILITY_CONSIDERATIONS_FOR_BADGE,
+    BADGE_AS_CHILD_USAGE_CODE,
+    BADGE_COMPONENT_API_TABLE,
+    BADGE_COMPONENT_CODE,
+    BADGE_DESIGN_GOALS,
+    BADGE_PREVIEW,
+    BADGE_VARIANTS,
+    HOW_BADGE_WORKS,
     SLOT_UTILITY_CODE,
 } from "@/constants/docs";
 
 export const metadata: Metadata = {
-    title: "Button | Grayscale Elements",
+    title: "Badge | Grayscale Elements",
     description:
-        "The Button component is a composable, accessible primitive built on explicit styling and Slot-based composition.",
+        "The Badge component is a small, non-interactive UI primitive for displaying status, metadata, or contextual labels using explicit styling and compositional patterns.",
 };
 
-export default function ButtonPage() {
+export default function BadgePage() {
     return (
         <>
             <Breadcrumb>
@@ -65,42 +65,39 @@ export default function ButtonPage() {
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <BreadcrumbPage>Button</BreadcrumbPage>
+                        <BreadcrumbPage>Badge</BreadcrumbPage>
                     </BreadcrumbItem>
                 </BreadcrumbList>
             </Breadcrumb>
-            <Heading className="mt-6 text-start sm:mt-12">Button</Heading>
+            <Heading className="mt-6 text-start sm:mt-12">Badge</Heading>
             <Text size="large" className="text-muted-foreground">
-                The Button component is a foundational UI primitive in GrayscaleElements. It provides a small, explicit
-                abstraction over native buttons while remaining fully composable, styleable, and owned by your
-                application.
+                The Badge component is a compact, presentational UI primitive used to display short pieces of contextual
+                information such as status, category labels, counts, or metadata.
             </Text>
             <Text className="mb-6 font-medium">
-                Button does not introduce framework-specific behavior, hidden state, or design-system constraints. It is
-                built using plain React, Tailwind CSS, and a small number of focused utilities to solve real problems
-                without adding complexity.
+                Badge is intentionally simple. It does not handle state, behavior, or interaction logic. Its sole
+                responsibility is to provide a consistent visual container for small, inline labels while remaining
+                fully composable and owned by your application.
             </Text>
             <CodeBlock language="typescript">
                 <CodeBlockHeader>
                     <DocumentTextIcon />
-                    <CodeBlockTitle>button-example.tsx</CodeBlockTitle>
+                    <CodeBlockTitle>badge-example.tsx</CodeBlockTitle>
                     <CodeBlockCopy />
                 </CodeBlockHeader>
                 <CodeBlockHeader className="justify-center gap-4 p-20">
-                    <Button>
-                        <span>Button Component</span>
-                    </Button>
+                    <Badge>Badge Component</Badge>
                 </CodeBlockHeader>
                 <CodeBlockContent>
-                    <CodeBlockCode>{BUTTON_PREVIEW}</CodeBlockCode>
+                    <CodeBlockCode>{BADGE_PREVIEW}</CodeBlockCode>
                 </CodeBlockContent>
             </CodeBlock>
             <Heading asChild id="design-goals" className="mt-12 text-start sm:mt-24">
                 <h2>Design Goals</h2>
             </Heading>
-            <Text>The Button component is designed with the following goals in mind:</Text>
+            <Text>Badge is designed with the following goals:</Text>
             <ul className="ms-6 mt-6 mb-12 list-disc space-y-4">
-                {BUTTON_DESIGN_GOALS.map((item) => (
+                {BADGE_DESIGN_GOALS.map((item) => (
                     <li key={item.label}>
                         <Text>
                             <strong>{item.label}:</strong> {item.description}
@@ -108,18 +105,14 @@ export default function ButtonPage() {
                     </li>
                 ))}
             </ul>
-            <Text>
-                Button is intentionally small. It solves one problem well: providing a flexible, accessible interactive
-                element with consistent styling.
-            </Text>
+            <Text>Badge avoids becoming an overloaded abstraction. It does one thing well and nothing more.</Text>
             <Heading asChild id="dependency-slot" className="mt-12 text-start sm:mt-24">
                 <h2>Dependency: Slot</h2>
             </Heading>
-            <Text>Before adding the Button component, you must add the Slot utility.</Text>
             <Text>
-                Slot enables Button to forward its props, styles, and behavior to a child element instead of always
-                rendering a <Code>{"<button>"}</Code>. This makes patterns like rendering a button as a link possible
-                without duplicating styles or logic.
+                Badge supports compositional rendering via the Slot utility. Slot allows Badge to forward its props and
+                styles to a child element instead of always rendering a fixed <Code>{"<span>"}</Code>. This is useful
+                when a badge needs to integrate with existing markup or custom components without duplicating styles.
             </Text>
             <Text>
                 If you have not already added Slot, start by creating the following file:{" "}
@@ -143,49 +136,47 @@ export default function ButtonPage() {
                 <h2>Installation</h2>
             </Heading>
             <Text>
-                The Button component is copied directly into your project. There is no package to install. Create the
-                following file: <Code>/components/ui/button.tsx</Code>
+                Badge is copied directly into your project. There is no package to install. Create the following file:{" "}
+                <Code>/components/ui/badge.tsx</Code>
             </Text>
-            <Text className="mb-6">Paste the Button implementation into this file.</Text>
+            <Text className="mb-6">Paste the Badge implementation into this file.</Text>
             <CodeBlock language="typescript">
                 <CodeBlockHeader>
                     <DocumentTextIcon />
-                    <CodeBlockTitle>button.tsx</CodeBlockTitle>
+                    <CodeBlockTitle>badge.tsx</CodeBlockTitle>
                     <CodeBlockCopy />
                 </CodeBlockHeader>
                 <CodeBlockContent>
-                    <CodeBlockCode>{BUTTON_COMPONENT_CODE}</CodeBlockCode>
+                    <CodeBlockCode>{BADGE_COMPONENT_CODE}</CodeBlockCode>
                 </CodeBlockContent>
             </CodeBlock>
             <Blockquote className="mt-6">
-                Button is built on top of Tailwind CSS and <Code>class-variance-authority</Code>. Both are required for
-                the component to function as documented.
+                Badge is built using Tailwind CSS and <Code>class-variance-authority</Code>. Both are required for the
+                component to function as documented.
             </Blockquote>
-            <Heading asChild id="how-button-works" className="mt-12 text-start sm:mt-24">
-                <h2>How Button Works</h2>
+            <Heading asChild id="how-badge-works" className="mt-12 text-start sm:mt-24">
+                <h2>How Badge Works</h2>
             </Heading>
-            <Text>Button uses a small number of well-defined building blocks:</Text>
+            <Text>Badge is implemented as a thin wrapper around a styled inline element. It uses:</Text>
             <ul className="ms-6 mt-6 mb-12 list-disc space-y-4">
-                {HOW_BUTTON_WORKS.map((item) => (
+                {HOW_BADGE_WORKS.map((item) => (
                     <li key={item}>
                         <Text>{item}</Text>
                     </li>
                 ))}
             </ul>
             <Text>
-                Styling variants are declared once and resolved at render time. The Button component itself remains a
-                thin wrapper that selects which element to render and which styles to apply.
+                Badge does not manage state, events, or interactions. It simply resolves classes based on the selected
+                variant and applies them to the rendered element.
             </Text>
-            <Text>There is no internal state, side effects, or lifecycle behavior.</Text>
-            <Heading asChild id="variants-and-sizes" className="mt-12 text-start sm:mt-24">
-                <h2>Variants and Sizes</h2>
+            <Heading asChild id="variants" className="mt-12 text-start sm:mt-24">
+                <h2>Variants</h2>
             </Heading>
             <Text>
-                Button exposes a controlled set of variants and sizes. These options are intentionally limited to keep
-                the component predictable and easy to reason about.
+                Badge exposes a small set of visual variants. These variants communicate context or intent without
+                introducing interaction or behavior.
             </Text>
-            <Text>Variants communicate visual intent, while sizes control physical dimensions.</Text>
-            {BUTTON_VARIANTS_AND_SIZES.map((item) => (
+            {BADGE_VARIANTS.map((item) => (
                 <div key={item.label}>
                     <Heading
                         asChild
@@ -198,17 +189,11 @@ export default function ButtonPage() {
                     <CodeBlock language="typescript">
                         <CodeBlockHeader>
                             <DocumentTextIcon />
-                            <CodeBlockTitle>{item.label.toLowerCase().concat("-button.tsx")}</CodeBlockTitle>
+                            <CodeBlockTitle>{item.label.toLowerCase().concat("-badge.tsx")}</CodeBlockTitle>
                             <CodeBlockCopy />
                         </CodeBlockHeader>
                         <CodeBlockHeader className="justify-center gap-4 p-20">
-                            <Button
-                                variant={item.variant as VariantProps<typeof button>["variant"]}
-                                size={item.size as VariantProps<typeof button>["size"]}
-                            >
-                                {item.icon && <item.icon />}
-                                <span className={cn(item.srOnly && "sr-only")}>{item.text}</span>
-                            </Button>
+                            <Badge variant={item.variant as VariantProps<typeof badge>["variant"]}>{item.label}</Badge>
                         </CodeBlockHeader>
                         <CodeBlockContent>
                             <CodeBlockCode>{item.code}</CodeBlockCode>
@@ -220,52 +205,50 @@ export default function ButtonPage() {
                 <h3>As Child</h3>
             </Heading>
             <Text>
-                Button supports compositional rendering through the <Code>asChild</Code> prop. When enabled, Button
-                forwards its styles and behavior to the child element instead of rendering a native{" "}
-                <Code>{"<button>"}</Code>.
+                Badge supports compositional rendering through the <Code>asChild</Code> prop. When enabled, Badge
+                forwards its styles and behavior to the child element instead of rendering a <Code>{"<span>"}</Code>.
             </Text>
             <Text className="mb-6">
-                This enables rendering a button as a link or custom component without duplicating styles.
+                This can be useful when: Integrating a badge into custom components, Adapting to existing semantic
+                markup, or Avoiding unnecessary wrapper elements. As with other compositional patterns in
+                GrayscaleElements, responsibility for semantics remains explicit.
             </Text>
             <CodeBlock language="typescript">
                 <CodeBlockHeader>
                     <DocumentTextIcon />
-                    <CodeBlockTitle>button-as-link.tsx</CodeBlockTitle>
+                    <CodeBlockTitle>badge-as-child.tsx</CodeBlockTitle>
                     <CodeBlockCopy />
                 </CodeBlockHeader>
                 <CodeBlockContent>
-                    <CodeBlockCode>{BUTTON_AS_CHILD_USAGE_CODE}</CodeBlockCode>
+                    <CodeBlockCode>{BADGE_AS_CHILD_USAGE_CODE}</CodeBlockCode>
                 </CodeBlockContent>
             </CodeBlock>
             <Heading asChild id="accessibility-considerations" className="mt-12 text-start sm:mt-24">
                 <h2>Accessibility Considerations</h2>
             </Heading>
             <Text>
-                Button inherits accessibility behavior from the element it renders. When rendered as a native{" "}
-                <Code>{"<button>"}</Code>, it includes built-in keyboard interaction, focus management, and semantics.
-            </Text>
-            <Text>
-                When using <Code>asChild</Code>, accessibility becomes the responsibility of the rendered element.
-                Ensure that:
+                Badge is a non-interactive, presentational component by default. When rendered as a{" "}
+                <Code>{"<span>"}</Code>, it carries no semantic meaning beyond its content. This is intentional. When
+                using Badge:
             </Text>
             <ul className="ms-6 mt-6 mb-12 list-disc space-y-4">
-                {ACCESSIBILITY_CONSIDERATIONS_FOR_BUTTON.map((item) => (
+                {ACCESSIBILITY_CONSIDERATIONS_FOR_BADGE.map((item) => (
                     <li key={item}>
                         <Text>{item}</Text>
                     </li>
                 ))}
             </ul>
             <Text>
-                Button does not attempt to infer or correct accessibility behavior. Responsibility is explicit by
-                design.
+                When rendering Badge with <Code>asChild</Code>, ensure that the rendered element remains semantically
+                appropriate for its role. Badge does not infer roles or accessibility attributes. Explicit
+                responsibility is preserved by design.
             </Text>
             <Heading asChild id="api" className="mt-12 text-start sm:mt-24">
                 <h2>API</h2>
             </Heading>
             <Text className="mb-6">
-                The Button API is intentionally small and explicit. Button forwards all valid native button props,
-                including <Code>type</Code>, <Code>disabled</Code>, <Code>onClick</Code>, and <Code>aria-*</Code>{" "}
-                attributes.
+                The Badge API is intentionally minimal. It exposes a small set of props to control its appearance and
+                rendering behavior.
             </Text>
             <Table>
                 <TableHeader>
@@ -277,7 +260,7 @@ export default function ButtonPage() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {BUTTON_COMPONENT_API_TABLE.map((item) => (
+                    {BADGE_COMPONENT_API_TABLE.map((item) => (
                         <TableRow key={item.name}>
                             <TableCell>
                                 <Code>{item.name}</Code>
@@ -295,24 +278,24 @@ export default function ButtonPage() {
                 <h2>Summary</h2>
             </Heading>
             <Text>
-                Button is a composable, predictable UI primitive designed to balance flexibility and clarity. It
-                provides: Explicit styling via variants and sizes, Flexible rendering through Slot-based composition,
-                Accessibility best practices without hidden behavior.
+                Badge is a small, focused UI primitive for displaying contextual labels. It provides: Clear visual
+                variants, Minimal surface area, and Optional compositional rendering
             </Text>
             <Text>
-                Button is not a framework abstraction. It is a starting point—meant to be copied, owned, and adapted to
-                fit your application&apos;s needs.
+                Badge does not attempt to be interactive or stateful. It exists to support clarity, consistency, and
+                explicit structure across your interface. As with all GrayscaleElements components, Badge is meant to be
+                copied, understood, and adapted to fit your application&apos;s needs.
             </Text>
             <div className="mt-24 flex items-center justify-between">
                 <Button asChild variant="ghost">
-                    <Link href="/docs/components/badge">
+                    <Link href="#">
                         <ArrowLongLeftIcon />
-                        <span>Badge</span>
+                        <span>Components</span>
                     </Link>
                 </Button>
                 <Button asChild variant="ghost">
-                    <Link href="/docs/components/slot">
-                        <span>Slot</span>
+                    <Link href="/docs/components/button">
+                        <span>Button</span>
                         <ArrowLongRightIcon />
                     </Link>
                 </Button>

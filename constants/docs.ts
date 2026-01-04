@@ -565,3 +565,142 @@ export const BUTTON_COMPONENT_API_TABLE = [
         description: "Renders the button using a Slot for flexible composition",
     },
 ] as const;
+
+export const BADGE_PREVIEW = `import { Badge } from "@/components/ui/badge";
+    
+export default function BadgeExamplePage() {
+    return (
+        <Badge>Badge Component</Badge>
+    );
+}` as const;
+
+export const BADGE_DESIGN_GOALS = [
+    { label: "Explicit ownership", description: "All code lives in your project" },
+    { label: "Minimal responsibility", description: "Visual structure only, no behavior" },
+    { label: "Composable rendering", description: "Can adapt to surrounding markup when needed" },
+    { label: "Predictable styling", description: "Variants are controlled and intentional" },
+] as const;
+
+export const BADGE_COMPONENT_CODE = `import { type ComponentPropsWithoutRef } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+
+import { Slot } from "@/components/utilities/slot";
+import { cn } from "@/library/utilities";
+
+export const badge = cva(
+    "focus-visible:ring-offset-background inline-flex h-6 w-fit items-center justify-center gap-1 rounded-full px-3 py-1 text-xs font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+    {
+        variants: {
+            variant: {
+                primary: "bg-primary text-primary-foreground hover:bg-primary/80 focus-visible:ring-primary",
+                secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:ring-secondary",
+                destructive:
+                    "bg-destructive text-destructive-foreground hover:bg-destructive/80 focus-visible:ring-destructive",
+                outline: "bg-background text-foreground hover:bg-muted focus-visible:ring-secondary border",
+            },
+        },
+        defaultVariants: { variant: "primary" },
+    }
+);
+
+type BadgeProps = ComponentPropsWithoutRef<"span"> & VariantProps<typeof badge> & { asChild?: boolean };
+
+export function Badge({ className, variant, asChild, ...props }: BadgeProps) {
+    const Component = asChild ? Slot : "span";
+
+    return <Component className={cn(badge({ variant }), className)} {...props} />;
+}` as const;
+
+export const HOW_BADGE_WORKS = [
+    "Tailwind CSS for utility-based styling",
+    "class-variance-authority (CVA) to define visual variants",
+    "Slot to enable optional compositional rendering",
+] as const;
+
+export const BADGE_VARIANTS = [
+    {
+        label: "Primary",
+        description: "The default badge style. Use Primary for neutral or general-purpose labels.",
+        variant: "primary",
+        code: `import { Badge } from "@/components/ui/badge";
+
+export default function PrimaryBadgePage() {
+    return (
+        <Badge variant="primary">Primary</Badge>
+    );
+}`,
+    },
+    {
+        label: "Secondary",
+        description:
+            "A lower-emphasis alternative. Use Secondary badges when the label should be visible but not dominant.",
+        variant: "secondary",
+        code: `import { Badge } from "@/components/ui/badge";
+
+export default function SecondaryBadgePage() {
+    return (
+        <Badge variant="secondary">Secondary</Badge>
+    );
+}`,
+    },
+    {
+        label: "Destructive",
+        description: "Use for critical or warning-related labels that indicate errors, danger, or irreversible states.",
+        variant: "destructive",
+        code: `import { Badge } from "@/components/ui/badge";
+
+export default function DestructiveBadgePage() {
+    return (
+        <Badge variant="destructive">Destructive</Badge>
+    );
+}`,
+    },
+    {
+        label: "Outline",
+        description:
+            "A minimal badge with a subtle border. Useful when badges should blend into dense interfaces while remaining legible.",
+        variant: "outline",
+        code: `import { Badge } from "@/components/ui/badge";
+
+export default function OutlineBadgePage() {
+    return (
+        <Badge variant="outline">Outline</Badge>
+    );
+}`,
+    },
+] as const;
+
+export const BADGE_AS_CHILD_USAGE_CODE = `import Link from "next/link";
+
+import { Badge } from "@/components/ui/badge";
+
+export default function AsChildBadgePage() {
+    return (
+        <Badge asChild variant="outline">
+            <Link href="#">
+                <span>As Link</span>
+            </Link>
+        </Badge>
+    );
+}` as const;
+
+export const ACCESSIBILITY_CONSIDERATIONS_FOR_BADGE = [
+    "Do not rely on color alone to communicate critical information",
+    "Ensure important status changes are conveyed through additional context (e.g., text, icons)",
+    "Avoid using Badge as a clickable element unless semantics are explicitly handled elsewhere",
+] as const;
+
+export const BADGE_COMPONENT_API_TABLE = [
+    {
+        name: "variant",
+        type: "primary | secondary | destructive | outline",
+        default: "primary",
+        description: "Controls the visual style of the badge",
+    },
+    {
+        name: "asChild",
+        type: "boolean",
+        default: "false",
+        description: "Renders the badge using a Slot for flexible composition",
+    },
+] as const;

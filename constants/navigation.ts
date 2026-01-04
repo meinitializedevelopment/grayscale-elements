@@ -6,7 +6,13 @@ export const DOCS_SIDEBAR_NAVIGATION_LINKS = [
             { label: "Setup & Installation", href: "/docs/setup" },
         ],
     },
-    { label: "Components", links: [{ label: "Button", href: "/docs/components/button" }] },
+    {
+        label: "Components",
+        links: [
+            { label: "Button", href: "/docs/components/button" },
+            { label: "Badge", href: "/docs/components/badge" },
+        ],
+    },
     { label: "Utilities", links: [{ label: "Slot", href: "/docs/components/slot" }] },
 ];
 
@@ -24,6 +30,21 @@ export const TOC_SIDEBAR_NAVIGATION_LINKS = {
         { label: "Prettier Configuration", href: "#prettier-configuration" },
         { label: "Configure Tailwind CSS Styling", href: "#configure-tailwind-css-styling" },
         { label: "Add Your First Component", href: "#add-your-first-component" },
+        { label: "Summary", href: "#summary" },
+    ],
+    BADGE: [
+        { label: "Design Goals", href: "#design-goals" },
+        { label: "Dependency: Slot", href: "#dependency-slot" },
+        { label: "Installation", href: "#installation" },
+        { label: "How Badge Works", href: "#how-badge-works" },
+        { label: "Variants", href: "#variants" },
+        { label: "Primary", href: "#primary" },
+        { label: "Secondary", href: "#secondary" },
+        { label: "Destructive", href: "#destructive" },
+        { label: "Outline", href: "#outline" },
+        { label: "As Child", href: "#as-child" },
+        { label: "Accessibility Considerations", href: "#accessibility-considerations" },
+        { label: "API", href: "#api" },
         { label: "Summary", href: "#summary" },
     ],
     BUTTON: [
