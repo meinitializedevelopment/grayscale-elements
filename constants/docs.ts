@@ -1,3 +1,5 @@
+import { CloudArrowDownIcon, SparklesIcon } from "@heroicons/react/24/solid";
+
 export const DESIGN_PHILOSOPHIES = [
     {
         label: "Copy the Code, Own the Code",
@@ -341,4 +343,225 @@ export const ACCESSIBILITY_CONSIDERATIONS_FOR_SLOT = [
     "Interactive elements include correct keyboard and focus behavior",
     "ARIA attributes are applied intentionally when required",
     "Links, buttons, and controls are not interchanged without considering accessibility implications",
-];
+] as const;
+
+export const BUTTON_PREVIEW = `import { Button } from "@/components/ui/button";
+    
+export default function ButtonExamplePage() {
+    return (
+        <Button>
+            <span>Button Component</span>
+        </Button>
+    );
+}` as const;
+
+export const BUTTON_DESIGN_GOALS = [
+    { label: "Explicit ownership", description: "The full source code lives in your project" },
+    { label: "Composable structure", description: "Rendering is controlled by the consumer when needed" },
+    { label: "Predictable styling", description: "Variants are explicit and opt-in" },
+    { label: "Minimal API surface", description: "No configuration-heavy props or hidden logic" },
+] as const;
+
+export const HOW_BUTTON_WORKS = [
+    "Tailwind CSS for utility-based styling",
+    "class-variance-authority (CVA) to define variants and sizes",
+    "Slot to enable flexible rendering via composition",
+    "React for declarative structure and behavior",
+] as const;
+
+export const BUTTON_VARIANTS_AND_SIZES = [
+    {
+        label: "Primary",
+        description: "The default button style. Use Primary buttons for the most important action on a page.",
+        variant: "primary",
+        size: "medium",
+        text: "Primary",
+        srOnly: false,
+        icon: undefined,
+        code: `import { Button } from "@/components/ui/button";
+    
+export default function ButtonExamplePage() {
+    return (
+        <Button variant="primary">
+            <span>Primary</span>
+        </Button>
+    );
+}`,
+    },
+    {
+        label: "Secondary",
+        description:
+            "A lower-emphasis alternative to the primary button. Use Secondary buttons for supporting actions.",
+        variant: "secondary",
+        size: "medium",
+        text: "Secondary",
+        srOnly: false,
+        icon: undefined,
+        code: `import { Button } from "@/components/ui/button";
+    
+export default function ButtonExamplePage() {
+    return (
+        <Button variant="secondary">
+            <span>Secondary</span>
+        </Button>
+    );
+}`,
+    },
+    {
+        label: "Destructive",
+        description: "Used for actions that result in permanent changes or data loss, such as deleting content.",
+        variant: "destructive",
+        size: "medium",
+        text: "Destructive",
+        srOnly: false,
+        icon: undefined,
+        code: `import { Button } from "@/components/ui/button";
+    
+export default function ButtonExamplePage() {
+    return (
+        <Button variant="destructive">
+            <span>Destructive</span>
+        </Button>
+    );
+}`,
+    },
+    {
+        label: "Outline",
+        description:
+            "A neutral variant with minimal emphasis. Useful when you want a button that blends into its surroundings while remaining interactive.",
+        variant: "outline",
+        size: "medium",
+        text: "Outline",
+        srOnly: false,
+        icon: undefined,
+        code: `import { Button } from "@/components/ui/button";
+    
+export default function ButtonExamplePage() {
+    return (
+        <Button variant="outline">
+            <span>Outline</span>
+        </Button>
+    );
+}`,
+    },
+    {
+        label: "Ghost",
+        description: "The least prominent variant. Ideal for subtle actions, toolbars, or inline interactions.",
+        variant: "ghost",
+        size: "medium",
+        text: "Ghost",
+        srOnly: false,
+        icon: undefined,
+        code: `import { Button } from "@/components/ui/button";
+    
+export default function ButtonExamplePage() {
+    return (
+        <Button variant="ghost">
+            <span>Ghost</span>
+        </Button>
+    );
+}`,
+    },
+    {
+        label: "With Icon",
+        description:
+            "Buttons can contain icons alongside text. Icons inherit sizing and alignment automatically. Use icons to reinforce meaning, not replace labels.",
+        variant: "outline",
+        size: "medium",
+        text: "With Icon",
+        srOnly: false,
+        icon: CloudArrowDownIcon,
+        code: `import { CloudArrowDownIcon } from "@heroicons/react/24/solid";
+import { Button } from "@/components/ui/button";
+
+export default function ButtonExamplePage() {
+    return (
+        <Button variant="outline">
+            <CloudArrowDownIcon />
+            <span>With Icon</span>
+        </Button>
+    );
+}`,
+    },
+    {
+        label: "Small",
+        description: "A compact version of the button for dense interfaces or secondary actions.",
+        variant: "outline",
+        size: "small",
+        text: "Small",
+        srOnly: false,
+        icon: undefined,
+        code: `import { Button } from "@/components/ui/button";
+    
+export default function ButtonExamplePage() {
+    return (
+        <Button variant="outline" size="small">
+            <span>Small</span>
+        </Button>
+    );
+}`,
+    },
+    {
+        label: "Icon",
+        description:
+            "A square button designed to contain only an icon. Use icon buttons sparingly and ensure the action is clear through context or accessible labeling.",
+        variant: "outline",
+        size: "icon",
+        text: "Icon Button",
+        srOnly: true,
+        icon: SparklesIcon,
+        code: `import { SparklesIcon } from "@heroicons/react/24/solid";
+import { Button } from "@/components/ui/button";
+
+export default function ButtonExamplePage() {
+    return (
+        <Button variant="outline" size="icon">
+            <SparklesIcon />
+            <span className="sr-only">Icon Button</span>
+        </Button>
+    );
+}`,
+    },
+] as const;
+
+export const BUTTON_AS_CHILD_USAGE_CODE = `import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
+
+export default function ButtonExamplePage() {
+    return (
+        <Button asChild variant="outline">
+            <Link href="#">
+                <span>As Link</span>
+            </Link>
+        </Button>
+    );
+}` as const;
+
+export const ACCESSIBILITY_CONSIDERATIONS_FOR_BUTTON = [
+    "Correct semantic elements are used for buttons and links",
+    "Focus styles remain visible when using asChild",
+    "Keyboard interaction is preserved",
+    "Clickable links and buttons are not confused interchangeably",
+] as const;
+
+export const BUTTON_COMPONENT_API_TABLE = [
+    {
+        name: "variant",
+        type: "primary | secondary | destructive | outline | ghost",
+        default: "primary",
+        description: "Controls the visual style of the button",
+    },
+    {
+        name: "size",
+        type: "small | medium | icon",
+        default: "medium",
+        description: "Controls the size and padding of the button",
+    },
+    {
+        name: "asChild",
+        type: "boolean",
+        default: "false",
+        description: "Renders the button using a Slot for flexible composition",
+    },
+] as const;

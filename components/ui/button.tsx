@@ -5,7 +5,7 @@ import { Slot } from "@/components/utilities/slot";
 import { cn } from "@/library/utilities";
 
 export const button = cva(
-    "focus-visible:ring-offset-background inline-flex cursor-pointer items-center justify-center rounded text-sm font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+    "focus-visible:ring-offset-background inline-flex cursor-pointer items-center justify-center rounded text-sm font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none! [&_svg]:size-4! [&_svg]:shrink-0!",
     {
         variants: {
             variant: {

@@ -33,7 +33,7 @@ export function TOCSidebar() {
                     ))}
                 </NavList>
             </Nav>
-            <Card className="bg-muted mt-auto">
+            <Card className="bg-muted mt-auto shrink-0">
                 <CardHeader className="p-4">
                     <CardTitle>Liking this project?</CardTitle>
                     <CardDescription className="text-foreground/80">

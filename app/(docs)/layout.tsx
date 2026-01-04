@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
     return (
-        <div className="flex min-h-[calc(100vh-80px)] items-start gap-12">
+        <div className="flex items-start">
             <DocsSidebar />
-            <main className="w-full grow">
-                <Container className="max-w-3xl">{children}</Container>
+            <main className="w-full">
+                <Container className="max-w-2xl">{children}</Container>
             </main>
             <TOCSidebar />
         </div>

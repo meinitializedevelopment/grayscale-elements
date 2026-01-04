@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 
-import { DocumentTextIcon } from "@heroicons/react/24/solid";
+import { ArrowLongLeftIcon, DocumentTextIcon } from "@heroicons/react/24/solid";
 
 import {
     Breadcrumb,
@@ -272,6 +272,14 @@ export default function SlotPage() {
                 beyond.
             </Text>
             <Text>Slot doesn&apos;t try to be clever—it simply makes the right thing easy to express.</Text>
+            <div className="mt-24 flex items-center justify-between">
+                <Button asChild variant="ghost">
+                    <Link href="/docs/components/button">
+                        <ArrowLongLeftIcon />
+                        <span>Button</span>
+                    </Link>
+                </Button>
+            </div>
         </>
     );
 }
