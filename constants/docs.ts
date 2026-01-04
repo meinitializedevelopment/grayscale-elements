@@ -380,7 +380,7 @@ export const BUTTON_VARIANTS_AND_SIZES = [
         icon: undefined,
         code: `import { Button } from "@/components/ui/button";
     
-export default function ButtonExamplePage() {
+export default function PrimaryButtonPage() {
     return (
         <Button variant="primary">
             <span>Primary</span>
@@ -399,7 +399,7 @@ export default function ButtonExamplePage() {
         icon: undefined,
         code: `import { Button } from "@/components/ui/button";
     
-export default function ButtonExamplePage() {
+export default function SecondaryButtonPage() {
     return (
         <Button variant="secondary">
             <span>Secondary</span>
@@ -417,7 +417,7 @@ export default function ButtonExamplePage() {
         icon: undefined,
         code: `import { Button } from "@/components/ui/button";
     
-export default function ButtonExamplePage() {
+export default function DestructiveButtonPage() {
     return (
         <Button variant="destructive">
             <span>Destructive</span>
@@ -436,7 +436,7 @@ export default function ButtonExamplePage() {
         icon: undefined,
         code: `import { Button } from "@/components/ui/button";
     
-export default function ButtonExamplePage() {
+export default function OutlineButtonPage() {
     return (
         <Button variant="outline">
             <span>Outline</span>
@@ -454,7 +454,7 @@ export default function ButtonExamplePage() {
         icon: undefined,
         code: `import { Button } from "@/components/ui/button";
     
-export default function ButtonExamplePage() {
+export default function GhostButtonPage() {
     return (
         <Button variant="ghost">
             <span>Ghost</span>
@@ -474,7 +474,7 @@ export default function ButtonExamplePage() {
         code: `import { CloudArrowDownIcon } from "@heroicons/react/24/solid";
 import { Button } from "@/components/ui/button";
 
-export default function ButtonExamplePage() {
+export default function WithIconButtonPage() {
     return (
         <Button variant="outline">
             <CloudArrowDownIcon />
@@ -493,7 +493,7 @@ export default function ButtonExamplePage() {
         icon: undefined,
         code: `import { Button } from "@/components/ui/button";
     
-export default function ButtonExamplePage() {
+export default function SmallButtonPage() {
     return (
         <Button variant="outline" size="small">
             <span>Small</span>
@@ -513,7 +513,7 @@ export default function ButtonExamplePage() {
         code: `import { SparklesIcon } from "@heroicons/react/24/solid";
 import { Button } from "@/components/ui/button";
 
-export default function ButtonExamplePage() {
+export default function IconButtonPage() {
     return (
         <Button variant="outline" size="icon">
             <SparklesIcon />
@@ -528,7 +528,7 @@ export const BUTTON_AS_CHILD_USAGE_CODE = `import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 
-export default function ButtonExamplePage() {
+export default function AsChildButtonPage() {
     return (
         <Button asChild variant="outline">
             <Link href="#">
