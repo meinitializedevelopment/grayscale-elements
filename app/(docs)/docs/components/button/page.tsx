@@ -187,7 +187,11 @@ export default function ButtonPage() {
             <Text>Variants communicate visual intent, while sizes control physical dimensions.</Text>
             {BUTTON_VARIANTS_AND_SIZES.map((item) => (
                 <div key={item.label}>
-                    <Heading asChild id={item.label.toLowerCase()} className="mt-6 text-start sm:mt-12">
+                    <Heading
+                        asChild
+                        id={item.label.replace(/\s+/g, "-").toLowerCase()}
+                        className="mt-6 text-start sm:mt-12"
+                    >
                         <h3>{item.label}</h3>
                     </Heading>
                     <Text className="mb-6">{item.description}</Text>
