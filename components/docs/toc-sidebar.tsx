@@ -20,9 +20,9 @@ export function TOCSidebar() {
     const links = TOC_SIDEBAR_NAVIGATION_LINKS[page as keyof typeof TOC_SIDEBAR_NAVIGATION_LINKS] ?? [];
 
     return (
-        <aside className="sticky top-20 flex h-[calc(100vh-80px)] w-80 shrink-0 flex-col gap-6 overflow-y-auto p-6 max-xl:hidden">
+        <aside className="sticky top-20 flex h-[calc(100vh-80px)] w-80 shrink-0 flex-col gap-6 overflow-hidden p-6 max-xl:hidden">
             <Text className="mt-0! font-semibold">On this page</Text>
-            <Nav>
+            <Nav className="grow overflow-y-auto">
                 <NavList className="flex-col items-start gap-3">
                     {links.map((item) => (
                         <NavItem key={item.label}>

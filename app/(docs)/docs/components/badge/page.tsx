@@ -39,6 +39,7 @@ import {
     BADGE_VARIANTS,
     HOW_BADGE_WORKS,
     SLOT_UTILITY_CODE,
+    WHEN_TO_USE_BADGE_UTILITY,
 } from "@/constants/docs";
 
 export const metadata: Metadata = {
@@ -223,6 +224,29 @@ export default function BadgePage() {
                     <CodeBlockCode>{BADGE_AS_CHILD_USAGE_CODE}</CodeBlockCode>
                 </CodeBlockContent>
             </CodeBlock>
+            <Heading asChild id="using-the-badge-utility" className="mt-12 text-start sm:mt-24">
+                <h2>Using the Badge Utility</h2>
+            </Heading>
+            <Text>
+                In addition to the <Code>Badge</Code> component, GrayscaleElements exposes a <Code>badge</Code> utility
+                generated using <Code>class-variance-authority</Code>. This utility allows you to apply badge styles
+                without using the Badge component itself. It is useful when:
+            </Text>
+            <ul className="ms-6 mt-6 mb-12 list-disc space-y-4">
+                {WHEN_TO_USE_BADGE_UTILITY.map((item) => (
+                    <li key={item}>
+                        <Text>{item}</Text>
+                    </li>
+                ))}
+            </ul>
+            <Text>
+                The badge utility returns a string of Tailwind CSS classes based on the selected variant. You can use it
+                directly like this: <Code>{`badge({ variant: "primary" })`}</Code>
+            </Text>
+            <Text>
+                The returned className can be applied to any element. This pattern keeps styling reusable while avoiding
+                unnecessary wrappers.
+            </Text>
             <Heading asChild id="accessibility-considerations" className="mt-12 text-start sm:mt-24">
                 <h2>Accessibility Considerations</h2>
             </Heading>

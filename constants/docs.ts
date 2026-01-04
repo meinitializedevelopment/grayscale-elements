@@ -538,6 +538,14 @@ export default function AsChildButtonPage() {
     );
 }` as const;
 
+export const WHEN_TO_USE_BUTTON_UTILITY = [
+    "You need button styling on a different semantic element (e.g., anchor)",
+    "You are working inside an existing component structure and cannot use the Button component directly",
+    "You want full control over the rendered markup while still applying consistent button styles",
+    "You need to apply button styles conditionally based on context or props",
+    "You want to avoid excessive boolean props for rendering variations",
+] as const;
+
 export const ACCESSIBILITY_CONSIDERATIONS_FOR_BUTTON = [
     "Correct semantic elements are used for buttons and links",
     "Focus styles remain visible when using asChild",
@@ -683,6 +691,13 @@ export default function AsChildBadgePage() {
         </Badge>
     );
 }` as const;
+
+export const WHEN_TO_USE_BADGE_UTILITY = [
+    "You need badge styling on a different semantic element (e.g., anchor)",
+    "You are working inside an existing component structure and cannot use the Badge component directly",
+    "You want full control over the rendered markup while still applying consistent badge styles",
+    "You need to apply badge styles conditionally based on context or props",
+] as const;
 
 export const ACCESSIBILITY_CONSIDERATIONS_FOR_BADGE = [
     "Do not rely on color alone to communicate critical information",
